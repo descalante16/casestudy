@@ -24,7 +24,7 @@ const Header = () => {
 
                 <div onClick={() => setisOpen(!isOpen)} className='w-7 h-7 absolute right-8 top-6 cursor-pointer md:hidden'>
                     {
-                        isOpen ?  <img src='/public/x.svg' className='w-7 h-7'/> :  <img src='/public/bar_icon.svg' className='w-7 h-7'/>
+                        isOpen ?  <img src='/public/x.svg' className='w-7 h-7'/> :  <img src='/bar_icon.svg' className='w-7 h-7'/>
                     }
                    
           

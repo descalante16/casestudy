@@ -13,7 +13,7 @@ const App = () => {
     <>
    
     <BrowserRouter>
-      <div className='App'>
+      <div className='App bg-color'>
 
         <Header/>
         <Routes>

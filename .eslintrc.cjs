@@ -7,7 +7,10 @@ module.exports = {
     'plugin:react-hooks/recommended',
   ],
   parser: "@babel/eslint-parser",
-  parserOptions: { ecmaVersion: 'latest', sourceType: 'module' },
+  requireConfigFile: false,
+  parserOptions: {
+     ecmaVersion: 'latest', 
+     sourceType: 'module' },
   settings: { react: { version: '18.2' } },
   plugins: ['react-refresh'],
   rules: {

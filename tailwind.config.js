@@ -5,7 +5,11 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage:{
+        'train-background': "url('/src/assets/images/bg-r2.jpg')",
+      }
+    },
   },
   plugins: [],
 }
