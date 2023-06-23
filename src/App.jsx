@@ -1,11 +1,14 @@
-import Header from './assets/components/Header'
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Home from './assets/pages/Home';
 import Train from './assets/pages/Train';
 import Book from './assets/pages/Book';
-import Cancel from './assets/pages/Cancel';
+import Ticket from './assets/pages/Ticket';
 import Login from './assets/pages/Login';
+import AdminDashboard from './assets/pages/AdminDashboard';
+import AdminHome from './assets/pages/AdminHome';
+import AdminTrains from './assets/pages/AdminTrains';
+import AdminBookings from './assets/pages/AdminBookings';
   
 const App = () => {
 
@@ -15,13 +18,17 @@ const App = () => {
     <BrowserRouter>
       <div className='App bg-color'>
 
-        <Header/>
         <Routes>
           <Route index path="/" element={<Home/>} />
           <Route path="/trains" element={<Train/>} />
           <Route path="/book" element={<Book/>} />
-          <Route path="/cancel" element={<Cancel/>} />
+          <Route path="/ticket" element={<Ticket/>} />
           <Route path="/login" element={<Login/>} />
+          <Route path="/admin/dashboard" element={<AdminDashboard/>} />
+          <Route path="/admin/home" element={<AdminHome/>} />
+          <Route path="/admin/trains" element={<AdminTrains/>} />
+          <Route path="/admin/bookings/passenger" element={<AdminBookings/>} />
+
 
         </Routes>
        

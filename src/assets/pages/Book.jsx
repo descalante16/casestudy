@@ -13,6 +13,8 @@ const Book = () => {
   const [Sex, setSex] = useState('');
   const [Address, setAddress] = useState('');
   const [Category, setCategory] = useState('');
+  const [PassengerFare, setPassengerFare] = useState('');
+
 
   const [trainNumberError, setTrainNumberError] = useState('');
   const [trainDateError, setTrainDateError] = useState('');
@@ -25,6 +27,7 @@ const Book = () => {
   const [bookingSuccess, setBookingSuccess] = useState(false);
   const [bookingDetails, setBookingDetails] = useState(null);
 
+
   const customStyles = {
     content: {
       top: '50%',
@@ -36,6 +39,8 @@ const Book = () => {
       
     },
   };
+
+  
 
 
 const handleSubmit = (event) => {
@@ -59,8 +64,37 @@ const handleSubmit = (event) => {
           
         })
         .catch(function (error) {
-          console.log(error);
+          if (error.response) {
+            // The request was made and the server responded with a status code
+            // that falls out of the range of 2xx
+            console.log('Error status:', error.response.status);
+            console.log('Error message:', error.response.data.error);
+      
+            // Display an error message to the user
+            alert('Booking failed. ' + error.response.data.error);
+          } else if (error.message) {
+            // Check if the error message contains the specific error pattern
+            if (error.message.includes('Fatal error:')) {
+              // Extract the error message from the string
+              const errorMessage = error.message.replace(/<[^>]+>/g, '');
+                // Display the extracted error message to the user
+              alert('Booking failed. ' + errorMessage);
+            } else {
+              // Display a generic error message to the user
+              alert('An error occurred. Please try again.');
+            }
+          } else {
+            // Something else went wrong
+            console.error('Unknown error occurred:', error);
+
+              // Display a generic error message to the user
+          alert('An unknown error occurred. Please try again.');
+          }
+
+          
         });
+
+        
 
         // Validate trainNumber field
       if (TrainNumber === '') {
@@ -106,6 +140,7 @@ const handleSubmit = (event) => {
         setCategoryError('Please select category');
         return;
       }
+    
       const booking = {
         TrainNumber,
         TrainDate,
@@ -115,6 +150,7 @@ const handleSubmit = (event) => {
         Sex,
         Address,
         Category,
+        
       };
       setBookingDetails(booking);
       setBookingSuccess(true);
@@ -318,6 +354,7 @@ const handleSubmit = (event) => {
       </div>
       <Modal isOpen={bookingSuccess}
        style={customStyles}
+       ariaHideApp={false}
        contentLabel="Example Modal"
        >
         <div className='modal-content w-96 h-96'>
@@ -331,6 +368,7 @@ const handleSubmit = (event) => {
               <p className='font-semibold'>Sex: {bookingDetails.Sex}</p>
               <p className='font-semibold'>Address: {bookingDetails.Address}</p>
               <p className='font-semibold'>Category: {bookingDetails.Category}</p>
+
             </div>
           )}
           <div className="flex gap-y-1.5	">
