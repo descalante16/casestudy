@@ -7,7 +7,9 @@ const AdminDashboard = () => {
   const [showModal, setShowModal] = useState(false);
   const [data, setDatamart] = useState([]);
   const [acSeatsReport, setAcSeatsReport] = useState([]);
-  const [generalReport, setGeneralReport] = useState([]);
+  const [generalSeatsReport, setGeneralSeatsReport] = useState([]);
+  const [trains, setTrains] = useState([]);
+
   const [passengerData, setPassengerData] = useState({
     totalPassenger: 0,
     acCount: 0,
@@ -17,6 +19,8 @@ const AdminDashboard = () => {
   useEffect(() => {
     fetchPassengerData();
     fetchAcSeatsReport();
+    fetchGeneralSeatsReport();
+    fetchTrains();
 
   }, []);
 
@@ -26,6 +30,15 @@ const AdminDashboard = () => {
       setPassengerData(response.data);
     } catch (error) {
       console.error('Error fetching passenger data:', error);
+    }
+  };
+
+  const fetchTrains = async () => {
+    try {
+      const response = await axios.get('http://localhost/api/trains.php');
+      setTrains(response.data);
+    } catch (error) {
+      console.error('Error fetching trains data:', error);
     }
   };
 
@@ -42,7 +55,17 @@ const AdminDashboard = () => {
     try {
       const response = await axios.get('http://localhost/api/acseatsdata.php');
       setAcSeatsReport(response.data);
-      console.log('AC seats report loaded successfully!');
+      console.log('Seats report loaded successfully!');
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const fetchGeneralSeatsReport = async () => {
+    try {
+      const response = await axios.get('http://localhost/api/generalseatsdata.php');
+      setGeneralSeatsReport(response.data);
+      console.log('General Seats report loaded successfully!');
     } catch (error) {
       console.log(error);
     }
@@ -82,8 +105,8 @@ const AdminDashboard = () => {
   return (
     <div className='bg-slate-700 h-screen'>
       <AdminHeader />
-      <div className="container p-6">
-        <div className='flex justify-between'>
+      <div className=" p-6">
+        <div className='flex justify-between '>
           <h1 className="text-2xl text-slate-200 font-bold mb-2">Dashboard</h1>
           <div className="text-center shadow-md">
             <button onClick={loadData} className="bg-emerald-700 p-2 font-semibold text-orange-50 mb-2 text-center">Load DataMart</button>
@@ -156,12 +179,13 @@ const AdminDashboard = () => {
           </div>
         </div>
       </Modal>
-
+      
+      <div className='flex row-auto bg-slate-700 justify-stretch'>
       <div className=" p-6 bg-slate-700">
           <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
           <hr className="border border-t mb-4 border-slate-200" />
 
-          <table className="table-auto w-full">
+          <table className="table-auto w-auto">
             <thead>
               <tr>
                 <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
@@ -181,7 +205,56 @@ const AdminDashboard = () => {
             </tbody>
           </table>
            </div>
+           <div className=" p-6 bg-slate-700">
+          <h2 className="text-xl font-bold mb-4 text-slate-50">General Seats Report</h2>
+          <hr className="border border-t mb-4 border-slate-200" />
+
+          <table className="table-auto w-auto">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+                <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
+                <th className="border px-4 py-2 bg-emerald-500">General Seats Count</th>
+              </tr>
+            </thead>
+            <tbody>
+              {generalSeatsReport.map((item, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
+                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.GeneralSeatsCount}</td>
+                </tr>
+              ))}
+
+            </tbody>
+          </table>
+           </div>
+           <div className=" p-6 bg-slate-700">
+          <h2 className="text-xl font-bold mb-4 text-slate-50">Train List</h2>
+          <hr className="border border-t mb-4 border-slate-200" />
+
+          <table className="table-auto w-auto">
+            <thead>
+              <tr>
+                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+                <th className="border px-4 py-2 bg-emerald-500">Train Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              {trains.map((item, index) => (
+                <tr key={index}>
+                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainName}</td>
+                </tr>
+              ))}
+
+            </tbody>
+          </table>
+           </div>
+           </div>
+      
       </div>
+      
     
   );
 };
