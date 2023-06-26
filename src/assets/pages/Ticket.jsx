@@ -1,6 +1,7 @@
 import Header from "../components/Header";
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 
 
 const Ticket = () => {
@@ -107,7 +108,7 @@ const Ticket = () => {
   return (
     <div className="flex flex-col items-center h-screen p-6  bg-image">
       <Header />
-      <div className="max-w-2xl w-full  flex flex-col md:flex-row mt-40">
+      <div className="max-w-2xl w-full   flex flex-col md:flex-row mt-40">
         <div className="bg-slate-50  shadow-lg rounded-lg p-6 mb-4 md:mr-4 md:mb-0 w-full flex-grow ">
           <h1 className="text-lg md:text-2xl font-bold mb-6">Train Ticket Cancellation</h1>
           <form onSubmit={handleCancelFormSubmit} className="space-y-4">
@@ -241,6 +242,12 @@ const Ticket = () => {
         </div>
       </div>
     )}
+
+    
+    <div className="mt-5 text-slate-50 text-lg">
+      Do you want to book a ticket? Click{' '}
+      <Link to="/book" className="text-blue-500 text-lg hover:text-blue-700 underline">here</Link>
+    </div>
     </div>
   );
 };

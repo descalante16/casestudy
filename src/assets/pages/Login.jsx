@@ -48,6 +48,11 @@ const Login = ({ setIsLoggedIn }) => {
     <div className="flex items-center bg-image justify-center min-h-screen">
         <Header/>
       <div className="w-96  bg-white rounded-md shadow-lg p-8 bg-opacity-40 m-10">
+      <div className="flex text-3xl justify-center gap-2">
+          <img src="/src/assets/images/3.png" className='w-14 h-14 mb-2'/>
+          <span className='font-bold text-orange-800 mt-2'>VEE Railway</span>
+
+            </div>
         <h1 className="text-2xl font-bold text-center text-emerald-900 mb-4">Admin Login</h1>
         <form onSubmit={handleLogin}>
           <div className={`mb-4 ${shakeAnimation ? 'animate-shake' : ''}`}>

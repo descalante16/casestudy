@@ -46,78 +46,82 @@ const AdminReports = () => {
     return (
         <div className='bg-slate-700 h-screen'>
             <AdminHeader/>
-        <div className='flex row-auto bg-slate-700 justify-evenly '>
-        <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
+            <div className="flex flex-wrap justify-evenly bg-slate-700">
+  <div className="p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
-                <th className="border px-4 py-2 bg-emerald-500">AC Seats Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {acSeatsReport.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.ACSeatsCount}</td>
-                </tr>
-              ))}
+    <div className="overflow-x-auto">
+      <table className="table-auto w-auto">
+        <thead>
+          <tr>
+            <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+            <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
+            <th className="border px-4 py-2 bg-emerald-500">AC Seats Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {acSeatsReport.map((item, index) => (
+            <tr key={index}>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.ACSeatsCount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div className="p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">General Seats Report</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-            </tbody>
-          </table>
-           </div>
-           <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">General Seats Report</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
+    <div className="overflow-x-auto">
+      <table className="table-auto w-auto">
+        <thead>
+          <tr>
+            <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+            <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
+            <th className="border px-4 py-2 bg-emerald-500">General Seats Count</th>
+          </tr>
+        </thead>
+        <tbody>
+          {generalSeatsReport.map((item, index) => (
+            <tr key={index}>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.GeneralSeatsCount}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+  <div className="p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">Train List</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
-                <th className="border px-4 py-2 bg-emerald-500">General Seats Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {generalSeatsReport.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.GeneralSeatsCount}</td>
-                </tr>
-              ))}
+    <div className="overflow-x-auto">
+      <table className="table-auto w-auto">
+        <thead>
+          <tr>
+            <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+            <th className="border px-4 py-2 bg-emerald-500">Train Name</th>
+          </tr>
+        </thead>
+        <tbody>
+          {trains.map((item, index) => (
+            <tr key={index}>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+              <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainName}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 
-            </tbody>
-          </table>
-           </div>
-           <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">Train List</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
-
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {trains.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainName}</td>
-                </tr>
-              ))}
-
-            </tbody>
-          </table>
-           </div>
-           </div>
       
       </div>
       

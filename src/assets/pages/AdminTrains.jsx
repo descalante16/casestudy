@@ -117,49 +117,51 @@ function AdminTrains() {
         <h1 className='text-white mb-3'>Train List</h1>
       </div>
       <div className="flex justify-center px-10">
-        <table className="w-full border border-gray-300">
-          <thead className="bg-gray-200">
-            <tr>
-              <th className="p-3 text-sm font-bold ">Train Number</th>
-              <th className="p-3 text-sm font-bold">Train Name</th>
-              <th className="p-3 text-sm font-bold">Source</th>
-              <th className="p-3 text-sm font-bold">Destination</th>
-              <th className="p-3 text-sm font-bold">AC Fare</th>
-              <th className="p-3 text-sm font-bold">General Fare</th>
-              <th className="p-3 text-sm font-bold">Weekdays Available</th>
-              <th className="p-3 text-sm font-bold">Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {currentTrains.map((train, index) => (
-              <tr key={train.TrainNumber} className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}>
-                <td className="p-3">{train.TrainNumber}</td>
-                <td className="p-3">{train.TrainName}</td>
-                <td className="p-3">{train.Source}</td>
-                <td className="p-3">{train.Destination}</td>
-                <td className="p-3">₱{train.AC_Fare}</td>
-                <td className="p-3">₱{train.General_Fare}</td>
-                <td className="p-3">{train.WeekdaysAvailable}</td>
-                <td className="p-3">
-                  <button
-                    onClick={() => handleUpdateTrain(train.TrainNumber)}
-                    className="bg-gray-800 text-white px-4 py-2 rounded-md text-base mr-2"
-                  >
-                    Update
-                  </button>
-                  <button
-                    onClick={() => handleDeleteTrain(train.TrainNumber)}
-                    className="bg-red-500 text-white px-4 py-2 rounded-md text-base"
-                  >
-                    Delete
-                  </button>
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        
-      </div>
+  <div className="w-full overflow-x-auto">
+    <table className="w-full border border-gray-300">
+      <thead className="bg-gray-200">
+        <tr>
+          <th className="p-3 text-sm font-bold">Train Number</th>
+          <th className="p-3 text-sm font-bold">Train Name</th>
+          <th className="p-3 text-sm font-bold">Source</th>
+          <th className="p-3 text-sm font-bold">Destination</th>
+          <th className="p-3 text-sm font-bold">AC Fare</th>
+          <th className="p-3 text-sm font-bold">General Fare</th>
+          <th className="p-3 text-sm font-bold">Weekdays Available</th>
+          <th className="p-3 text-sm font-bold">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        {currentTrains.map((train, index) => (
+          <tr key={train.TrainNumber} className={`${index % 2 === 0 ? 'bg-gray-100' : 'bg-white'}`}>
+            <td className="p-3">{train.TrainNumber}</td>
+            <td className="p-3">{train.TrainName}</td>
+            <td className="p-3">{train.Source}</td>
+            <td className="p-3">{train.Destination}</td>
+            <td className="p-3">₱{train.AC_Fare}</td>
+            <td className="p-3">₱{train.General_Fare}</td>
+            <td className="p-3">{train.WeekdaysAvailable}</td>
+            <td className="p-3">
+              <button
+                onClick={() => handleUpdateTrain(train.TrainNumber)}
+                className="bg-gray-800 text-white px-4 py-2 rounded-md text-base mr-2"
+              >
+                Update
+              </button>
+              <button
+                onClick={() => handleDeleteTrain(train.TrainNumber)}
+                className="bg-red-500 text-white px-4 py-2 rounded-md text-base"
+              >
+                Delete
+              </button>
+            </td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
+
       {/* Pagination */}
       <ul className="flex justify-end pr-10 mt-4">
         {Array.from({ length: Math.ceil(trains.length / trainsPerPage) }).map((_, index) => (

@@ -20,7 +20,7 @@ function AdminHeader() {
         
         <div className="flex grow items-center">
           <img src="/src/assets/images/3.png" alt="Logo" className="w-8 h-8 mr-2" />
-          <h1 className="text-white text-xl font-bold">VEE Railway</h1>
+          <h1 className="text-white md:flex md:text-xl md:font-bold hidden">VEE Railway</h1>
         </div>
         <div className="flex flex-none items-center">
           <div className="relative">

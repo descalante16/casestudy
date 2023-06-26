@@ -103,7 +103,7 @@ const AdminDashboard = () => {
   }, []);
 
   return (
-    <div className='bg-slate-700 h-screen'>
+    <div className='bg-slate-700 h-full'>
       <AdminHeader />
       <div className=" p-6">
         <div className='flex justify-between '>
@@ -112,32 +112,34 @@ const AdminDashboard = () => {
             <button onClick={loadData} className="bg-emerald-700 p-2 font-semibold text-orange-50 mb-2 text-center">Load DataMart</button>
           </div>
         </div>
-        <hr className="border border-t mb-4 border-slate-200" />
-        <div className="flex">
-          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
-            <div className="bg-purple-200  p-8 shadow">
-              <h2 className="text-lg  font-bold">Total Train</h2>
-              <p className="text-xl ">10</p>
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
-            <div className="bg-blue-300 p-8 shadow">
-              <h2 className="text-lg font-bold">Total Passengers</h2>
-              <p className="text-xl">{passengerData.totalPassenger}</p>
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
-            <div className="bg-indigo-500  p-8 shadow">
-              <h2 className="text-lg font-bold">Booked AC Category</h2>
-              <p className="text-xl">{passengerData.acCount}</p>
-            </div>
-          </div>
-          <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
-            <div className="bg-yellow-200  p-8 shadow">
-              <h2 className="text-lg font-bold">Booked General Category </h2>
-              <p className="text-xl">{passengerData.generalCount}</p>
-            </div>
-          </div>
+        <hr className="border border-t mb-4  border-slate-200" />
+        <div className="flex flex-wrap">
+  <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
+    <div className="bg-purple-200 p-8 shadow">
+      <h2 className="text-lg font-bold">Total Train</h2>
+      <p className="text-xl">10</p>
+    </div>
+  </div>
+  <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
+    <div className="bg-blue-300 p-8 shadow">
+      <h2 className="text-lg font-bold">Total Passengers</h2>
+      <p className="text-xl">{passengerData.totalPassenger}</p>
+    </div>
+  </div>
+  <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
+    <div className="bg-indigo-500 p-8 shadow">
+      <h2 className="text-lg font-bold">Booked AC Category</h2>
+      <p className="text-xl">{passengerData.acCount}</p>
+    </div>
+  </div>
+  <div className="w-full sm:w-1/2 md:w-1/4 lg:w-1/4 xl:w-1/4 px-2 mb-4">
+    <div className="bg-yellow-200 p-8 shadow">
+      <h2 className="text-lg font-bold">Booked General Category</h2>
+      <p className="text-xl">{passengerData.generalCount}</p>
+    </div>
+  </div>
+
+
         </div>
       </div>
 
@@ -180,78 +182,76 @@ const AdminDashboard = () => {
         </div>
       </Modal>
       
-      <div className='flex row-auto bg-slate-700 justify-evenly'>
-      <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
+      <div className="flex flex-wrap bg-slate-700 justify-evenly">
+  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
-                <th className="border px-4 py-2 bg-emerald-500">AC Seats Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {acSeatsReport.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.ACSeatsCount}</td>
-                </tr>
-              ))}
+    <table className="table-auto w-auto">
+      <thead>
+        <tr>
+          <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+          <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
+          <th className="border px-4 py-2 bg-emerald-500">AC Seats Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {acSeatsReport.map((item, index) => (
+          <tr key={index}>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.ACSeatsCount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">General Seats Report</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-            </tbody>
-          </table>
-           </div>
-           <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">General Seats Report</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
+    <table className="table-auto w-auto">
+      <thead>
+        <tr>
+          <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+          <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
+          <th className="border px-4 py-2 bg-emerald-500">General Seats Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        {generalSeatsReport.map((item, index) => (
+          <tr key={index}>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.GeneralSeatsCount}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 p-6 bg-slate-700">
+    <h2 className="text-xl font-bold mb-4 text-slate-50">Train List</h2>
+    <hr className="border border-t mb-4 border-slate-200" />
 
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Date</th>
-                <th className="border px-4 py-2 bg-emerald-500">General Seats Count</th>
-              </tr>
-            </thead>
-            <tbody>
-              {generalSeatsReport.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainDate}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.GeneralSeatsCount}</td>
-                </tr>
-              ))}
+    <table className="table-auto w-auto">
+      <thead>
+        <tr>
+          <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
+          <th className="border px-4 py-2 bg-emerald-500">Train Name</th>
+        </tr>
+      </thead>
+      <tbody>
+        {trains.map((item, index) => (
+          <tr key={index}>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
+            <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainName}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+</div>
 
-            </tbody>
-          </table>
-           </div>
-           <div className=" p-6 bg-slate-700">
-          <h2 className="text-xl font-bold mb-4 text-slate-50">Train List</h2>
-          <hr className="border border-t mb-4 border-slate-200" />
-
-          <table className="table-auto w-auto">
-            <thead>
-              <tr>
-                <th className="border px-4 py-2 bg-emerald-500">Train Number</th>
-                <th className="border px-4 py-2 bg-emerald-500">Train Name</th>
-              </tr>
-            </thead>
-            <tbody>
-              {trains.map((item, index) => (
-                <tr key={index}>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainNumber}</td>
-                  <td className="border px-4 py-2 text-slate-50 bg-slate-600">{item.TrainName}</td>
-                </tr>
-              ))}
-
-            </tbody>
-          </table>
-           </div>
-           </div>
       
       </div>
       
