@@ -180,7 +180,7 @@ const AdminDashboard = () => {
         </div>
       </Modal>
       
-      <div className='flex row-auto bg-slate-700 justify-stretch'>
+      <div className='flex row-auto bg-slate-700 justify-evenly'>
       <div className=" p-6 bg-slate-700">
           <h2 className="text-xl font-bold mb-4 text-slate-50">AC Seats Report</h2>
           <hr className="border border-t mb-4 border-slate-200" />

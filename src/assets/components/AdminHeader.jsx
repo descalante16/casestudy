@@ -38,9 +38,9 @@ function AdminHeader() {
                 <Link to="/admin/bookings/passenger" className="block px-4 py-2 hover:bg-gray-200 font-semibold">
                   Passengers
                 </Link>
-                <a href="#home" className="block px-4 py-2 hover:bg-gray-200 font-medium">
+                <Link to="/admin/reports" className="block px-4 py-2 hover:bg-gray-200 font-semibold">
                   Reports
-                </a>
+                </Link>
               </div>
             )}
           </div>
