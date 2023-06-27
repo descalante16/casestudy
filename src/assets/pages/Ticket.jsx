@@ -110,7 +110,7 @@ const Ticket = () => {
       <Header />
       <div className="max-w-2xl w-full   flex flex-col md:flex-row mt-40">
         <div className="bg-slate-50  shadow-lg rounded-lg p-6 mb-4 md:mr-4 md:mb-0 w-full flex-grow ">
-          <h1 className="text-lg md:text-2xl font-bold mb-6">Train Ticket Cancellation</h1>
+          <h1 className="text-lg md:text-2xl font-bold mb-6">Ticket Cancellation</h1>
           <form onSubmit={handleCancelFormSubmit} className="space-y-4">
             <div>
               <label htmlFor="cancelTicketId" className="block mb-1">Ticket ID:</label>
